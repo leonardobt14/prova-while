@@ -8,15 +8,18 @@ public class Projeto {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		String nome;
+		String nome, pessoaganhoumais = "";
 		int horastrabalhadas, opcaomenu, totalhoras;
-		double valorhora, custototal, custocada;
+		double valorhora, custototal, custocada, ganhoumais;
 		char outrofuncionario;
 		
 		totalhoras = 0;
 		custototal = 0;
+		custocada = 0;
+		ganhoumais= 0;
 
-		do {System.out.print("Nome: ");
+		do {
+		System.out.print("Nome: ");
 		nome = sc.next();
 
 		System.out.print("Horas trabalhadas: ");
@@ -39,10 +42,20 @@ public class Projeto {
 			System.out.print("Tentativa Inválida! Digite apenas S (sim) ou N (não)");
 			outrofuncionario = sc.next().charAt(0);
 		}
+		 
 		totalhoras = totalhoras + horastrabalhadas;
 		custocada = horastrabalhadas * valorhora;
 		custototal = custototal + custocada;
+		
+		if (ganhoumais - custocada < custocada ) {
+			pessoaganhoumais = nome;
+		}
+		
+		ganhoumais = custocada;
+		
 		} while (outrofuncionario == 'S' || outrofuncionario == 's');
+		
+		
 		
 		
 		do {
@@ -50,6 +63,8 @@ public class Projeto {
 		System.out.println("MENU");
 		System.out.println("1 - Total de horas trabalhadas");
 		System.out.println("2 - Custo total");
+		System.out.println("3 - Nome da pessoa que ganhou mais");
+		System.out.println("4 - Sair");
 		System.out.print("Digite uma opção: ");
 		opcaomenu = sc.nextInt();
 		
@@ -57,12 +72,27 @@ public class Projeto {
 			System.out.println();
 			System.out.println("Total de horas = " + totalhoras);
 		}
-		if (opcaomenu == 2) {
+		else if (opcaomenu == 2) {
 			System.out.println();
 			System.out.printf("Custo total = R$ %.2f%n" , custototal);
 		}
+		else if (opcaomenu == 3) {
+			System.out.println();
+			System.out.printf("Pessoa que ganhou mais: %s" , pessoaganhoumais);
+			System.out.println();
+		}
+		else {
+			if (opcaomenu != 4) {
+				System.out.println();
+				System.out.print("Opção Inválida! Tente novamente");
+				System.out.println();
+			}
+		}
 		
 		} while (opcaomenu != 4);
+		
+		System.out.println();
+		System.out.println("FIM DO PROGRAMA!");
 
 		sc.close();
 	}
