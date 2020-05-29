@@ -9,7 +9,7 @@ public class Projeto {
 		Scanner sc = new Scanner(System.in);
 
 		String nome;
-		int horastrabalhadas;
+		int horastrabalhadas, opcaomenu;
 		double valorhora;
 		char outrofuncionario;
 
@@ -37,6 +37,14 @@ public class Projeto {
 			outrofuncionario = sc.next().charAt(0);
 		}
 		} while (outrofuncionario == 'S' || outrofuncionario == 's');
+		
+		
+		do {
+		System.out.println();	
+		System.out.println("MENU");
+		System.out.print("Digite uma opção: ");
+		opcaomenu = sc.nextInt();
+		} while (opcaomenu != 4);
 
 		sc.close();
 	}
